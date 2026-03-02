@@ -1,38 +1,21 @@
-const http = require('http')
-const fs = require('fs')
+const express = require('express')
+const app = express()
 
-const server = http.createServer((req, res) => {
-    res.setHeader('Content-Type', 'text/html')
+const root = { root: __dirname }
 
-    let path = './pages/'
+app.get('/', (req, res) => res.status(200).sendFile('./pages/index.html', root))
+app.get('/about', (req, res) =>
+    res.status(200).sendFile('./pages/about.html', root)
+)
+app.get('/contact-me', (req, res) =>
+    res.status(200).sendFile('./pages/contact-me.html', root)
+)
+app.use((req, res) => res.status(404).sendFile('./pages/404.html', root))
 
-    switch (req.url) {
-        case '/':
-            path += 'index.html'
-            res.statusCode = 200
-            break
-        case '/about':
-            path += 'about.html'
-            res.statusCode = 200
-            break
-        case '/contact-me':
-            path += 'contact-me.html'
-            res.statusCode = 200
-            break
-        default:
-            path += '404.html'
-            res.statusCode = 404
-            break
+const PORT = 3000
+app.listen(PORT, (error) => {
+    if (error) {
+        throw error
     }
-
-    fs.readFile(path, (err, data) => {
-        if (err) {
-            console.error(err)
-            res.end()
-        } else {
-            res.end(data)
-        }
-    })
+    console.log('Refactored server code with Express!')
 })
-
-server.listen(3000, 'localhost', () => {})

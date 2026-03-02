@@ -1,0 +1,23 @@
+{
+  "name": "basic-information-site",
+  "version": "1.0.0",
+  "description": "This project is to create a very basic informational site that contains 4 pages: index, about, contact-me and 404.",
+  "homepage": "https://github.com/jimboscatfood/basic-information-site#readme",
+  "bugs": {
+    "url": "https://github.com/jimboscatfood/basic-information-site/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimboscatfood/basic-information-site.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
